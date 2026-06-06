@@ -240,6 +240,7 @@ int timeToSpeed(int Time = 0) {
 boolean button = false;
 void setup() {
   pinMode(D0, INPUT);
+  
   display.setBrightness(2);
   display.setSegments(allON);
   display.clear();
@@ -247,14 +248,17 @@ void setup() {
   myObj["maxSpeed"] = 0;
   myObj["round"] = 0;
   if(SPIFFS.exists("/bicycle.json")) {readData();}
+  
   Serial.begin(9600);
   Serial.println("\nConfiguring access point...");
+  
   /* You can remove the password parameter if you want the AP to be open. */
   WiFi.softAP(ssid, password);
   WiFi.softAPConfig(local_IP, local_IP, subnet);
   IPAddress myIP = WiFi.softAPIP();
   Serial.print("AP IP address: ");
   Serial.println(myIP);
+  
   server.onNotFound([]() {
     if (!handleFileRead(server.uri())) {}
   });
