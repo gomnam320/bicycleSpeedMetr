@@ -247,7 +247,7 @@ void setup() {
   myObj["maxSpeed"] = 0;
   myObj["round"] = 0;
   if(SPIFFS.exists("/bicycle.json")) {readData();}
-  Serial.begin(115200);
+  Serial.begin(9600);
   Serial.println("\nConfiguring access point...");
   /* You can remove the password parameter if you want the AP to be open. */
   WiFi.softAP(ssid, password);
